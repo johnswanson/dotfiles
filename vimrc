@@ -22,6 +22,7 @@ set nocompatible
     Bundle 'altercation/vim-colors-solarized'
     Bundle 'vim-scripts/VimClojure'
     Bundle 'vim-scripts/JSON.vim'
+    Bundle 'scrooloose/syntastic'
     if iCanHazVundle == 0
         echo "Installing Bundles, please ignore key map error messages"
         echo ""
