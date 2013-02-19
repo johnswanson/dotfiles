@@ -14,7 +14,7 @@ set nocompatible
     Bundle 'gmarik/vundle'
     "Add your bundles here
     Bundle 'gmarik/vundle'
-    Bundle 'kien/ctrlp'
+    Bundle 'kien/ctrlp.vim'
     Bundle 'pangloss/vim-javascript'
     Bundle 'tpope/vim-surround'
     Bundle 'kchmck/vim-coffee-script'

@@ -21,6 +21,7 @@ export NODE_PATH="/usr/local/lib/node_modules"
 alias pw="mawud"
 alias p="ssh johnswanson@dev.paste.bz"
 alias pwp="python ~/Dropbox/pw-generator/pw.py"
+alias ls="ls" # get rid of stupid colors.
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
