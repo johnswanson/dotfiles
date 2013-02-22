@@ -106,3 +106,4 @@ if has("gui_running")
 else
   syntax on
 endif
+set colorcolumn=80
