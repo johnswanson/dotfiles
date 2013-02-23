@@ -77,6 +77,10 @@ nnoremap ; :
 nnoremap J mlJ`l
 nnoremap <Leader>0 :VimuxPromptCommand<CR>
 nnoremap <Leader>t :VimuxRunLastCommand<CR>
+
+" check off and uncheck items on todo list
+nnoremap <Leader>d ^rxj
+nnoremap <Leader>s ^roj
 set scrolloff=2
 set noswapfile
 set nowb
