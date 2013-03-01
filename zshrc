@@ -22,6 +22,7 @@ alias pw="mawud"
 alias p="ssh johnswanson@dev.paste.bz"
 alias pwp="python ~/Dropbox/pw-generator/pw.py"
 alias ls="ls" # get rid of stupid colors.
+alias node="env NODE_NO_READLINE=1 rlwrap node"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
