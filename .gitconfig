@@ -1,3 +1,22 @@
 [user]
-	name = John Swanson
-	email = john.d.swanson@gmail.com
+  name = John Swanson
+  email = john.d.swanson@gmail.com
+[alias]
+  last = log -1 HEAD
+  d = diff
+  m = merge
+  st = status
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[color]
+  ui = true
+[core]
+  excludesfile = /Users/jds/.gitignore_global
+  editor = vim
+[push]
+[advice]
+  pushNonFastForward = false
+  statusHints = false
+  commitBeforeMerge = false
+  resolveConflict = false
+  implicitIdentity = false
+  detachedHead = false
