@@ -13,11 +13,8 @@ unsetopt correct_all
 ZSH_THEME="personal"
 
 export EDITOR="vim"
-export GOPATH=$HOME/langs/golang
-export GUILE_LOAD_PATH=$home/langs/guile
 export GOMAXPROCS=8
 export BAT_CHARGE="/usr/local/bin/batcharge.py"
-export NODE_PATH="/usr/local/lib/node_modules"
 alias pw="mawud"
 alias p="ssh johnswanson@dev.paste.bz"
 alias pwp="python ~/Dropbox/pw-generator/pw.py"
@@ -53,5 +50,8 @@ bindkey -v
 bindkey "^K" history-beginning-search-backward
 bindkey "^J" history-beginning-search-forward
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Python.framework/Versions/2.7/bin:$GOPATH/bin:/usr/local/share/npm/bin:/Users/jds/Library/Haskell/bin:/Applications/Racket\ v5.3.1/bin:/usr/local/Cellar/chicken/4.7.0.6/bin
+export PATH=$PATH:/usr/local/bin:/usr/bin:/usr/local/sbin:/bin:/usr/sbin:/sbin:/usr/local/go/bin
