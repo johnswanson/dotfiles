@@ -1,5 +1,5 @@
-set nocompatible
-" Setting up Vundle - the vim plugin bundler
+  set nocompatible
+  filetype off
     let iCanHazVundle=1
     let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
     if !filereadable(vundle_readme)
@@ -20,7 +20,7 @@ set nocompatible
     Bundle 'kchmck/vim-coffee-script'
     Bundle 'derekwyatt/vim-scala'
     Bundle 'altercation/vim-colors-solarized'
-    Bundle 'vim-scripts/VimClojure'
+    Bundle 'guns/vim-clojure-static'
     Bundle 'vim-scripts/JSON.vim'
     Bundle 'goldfeld/vim-seek'
     if iCanHazVundle == 0
@@ -28,8 +28,8 @@ set nocompatible
         echo ""
         :BundleInstall
     endif
-" Setting up Vundle - the vim plugin bundler end
-"
+syntax on
+set nocompatible
 filetype plugin indent on
 let loaded_matchparen = 1
 let g:ctrlp_clear_cache_on_exit = 0
