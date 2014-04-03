@@ -20,3 +20,5 @@
   resolveConflict = false
   implicitIdentity = false
   detachedHead = false
+[push]
+	default = simple
