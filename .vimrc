@@ -12,16 +12,17 @@
     set rtp+=~/.vim/bundle/vundle/
     call vundle#rc()
     Bundle 'gmarik/vundle'
-    "Add your bundles here
     Bundle 'kien/ctrlp.vim'
-    Bundle 'pangloss/vim-javascript'
     Bundle 'tpope/vim-surround'
-    Bundle 'kchmck/vim-coffee-script'
-    Bundle 'derekwyatt/vim-scala'
     Bundle 'altercation/vim-colors-solarized'
-    Bundle 'guns/vim-clojure-static'
-    Bundle 'vim-scripts/JSON.vim'
-    Bundle 'goldfeld/vim-seek'
+
+    " optional bundles
+    " Bundle 'pangloss/vim-javascript'
+    " Bundle 'kchmck/vim-coffee-script'
+    " Bundle 'derekwyatt/vim-scala'
+    " Bundle 'guns/vim-clojure-static'
+    " Bundle 'vim-scripts/JSON.vim'
+    " Bundle 'goldfeld/vim-seek'
     if iCanHazVundle == 0
         echo "Installing Bundles, please ignore key map error messages"
         echo ""
