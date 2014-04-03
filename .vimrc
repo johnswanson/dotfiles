@@ -13,7 +13,6 @@
     call vundle#rc()
     Bundle 'gmarik/vundle'
     "Add your bundles here
-    Bundle 'gmarik/vundle'
     Bundle 'kien/ctrlp.vim'
     Bundle 'pangloss/vim-javascript'
     Bundle 'tpope/vim-surround'
