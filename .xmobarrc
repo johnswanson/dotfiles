@@ -1,0 +1,13 @@
+Config { bgColor = "black"
+       , fgColor = "grey"
+       , font = "xft:Ubuntu Mono:size=14:antialias=true"
+       , position = Top
+       , commands = [ Run Network "eno1" ["-L","0","-H","32","--normal","green","--high","red"] 10
+                    , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                    , Run Memory ["-t","Mem: <used> / <total>"] 10
+                    , Run Date "%F %X" "date" 10
+                    , Run Com "uname" ["-s","-r"] "" 36000
+                    ]
+       , alignSep = "}-{"
+       , template = "%cpu% | %memory% | %eno1% }-{ %date% %uname%"
+       }

@@ -54,4 +54,4 @@ bindkey "^J" history-beginning-search-forward
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # Customize to your needs...
-export PATH=$PATH:/usr/local/bin:/usr/bin:/usr/local/sbin:/bin:/usr/sbin:/sbin:/usr/local/go/bin
+export PATH=$PATH:/usr/local/bin:/usr/bin:/usr/local/sbin:/bin:/usr/sbin:/sbin:$HOME/bin
