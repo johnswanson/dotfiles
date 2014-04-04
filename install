@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [[ `uname` == "Linux" ]]; then
+  platform='linux'
+elif [[ `uname` == "Darwin" ]]; then
+  platform='osx'
+fi
+
+ln -s ./.gitconfig ~/.gitconfig
+ln -s ./.tmux.conf ~/.tmux.conf
+ln -s ./.vimrc ~/.vimrc
+ln -s ./.zshrc ~/.zshrc
+git clone git@github.com:johnswanson/oh-my-zsh ~/.oh-my-zsh
+
+if [[ $platform == "linux" ]]; then
+  ln -s ./.xinitrc ~/.xinitrc
+  ln -s ./.xmobarrc ~/.xmobarrc
+  mkdir ~/.xmonad
+  ln -s ./xmonad.hs ~/.xmonad/xmonad.hs
+fi
