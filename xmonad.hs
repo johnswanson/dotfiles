@@ -1,5 +1,5 @@
 import XMonad
-import XMonad.Hooks.DynamicLog (xmobar)
+import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Run
 

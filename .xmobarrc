@@ -7,7 +7,8 @@ Config { bgColor = "black"
                     , Run Memory ["-t","Mem: <used> / <total>"] 10
                     , Run Date "%F %X" "date" 10
                     , Run Com "uname" ["-s","-r"] "" 36000
+                    , Run StdinReader
                     ]
        , alignSep = "}-{"
-       , template = "%cpu% | %memory% | %eno1% }-{ %date% %uname%"
+       , template = "%StdinReader% | %cpu% | %memory% | %eno1% }-{ %date% %uname%"
        }
