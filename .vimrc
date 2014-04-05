@@ -23,6 +23,7 @@
     " Bundle 'guns/vim-clojure-static'
     " Bundle 'vim-scripts/JSON.vim'
     " Bundle 'goldfeld/vim-seek'
+    " Bundle 'lukerandall/haskellmode-vim
     if iCanHazVundle == 0
         echo "Installing Bundles, please ignore key map error messages"
         echo ""
