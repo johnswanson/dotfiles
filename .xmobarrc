@@ -1,14 +1,23 @@
 Config { bgColor = "black"
        , fgColor = "grey"
-       , font = "xft:Ubuntu Mono:size=14:antialias=true"
+       , font = "xft:Ubuntu Mono:size=8:antialias=true"
        , position = Top
        , commands = [ Run Network "eno1" ["-L","0","-H","32","--normal","green","--high","red"] 10
-                    , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                    , Run CoreTemp ["-t", "<core0>C|<core1>C|<core2>C|<core3>C",
+                                    "-L", "40",
+                                    "-H", "60",
+                                    "-l", "green",
+                                    "-n", "gray90",
+                                    "-h", "red"] 50
+                    , Run MultiCpu ["-t","<autototal>",
+                                    "-L","3","-H","50",
+                                    "--normal","green",
+                                    "--high","red"] 10
                     , Run Memory ["-t","Mem: <used> / <total>"] 10
                     , Run Date "%F %X" "date" 10
                     , Run Com "uname" ["-s","-r"] "" 36000
                     , Run StdinReader
                     ]
        , alignSep = "}-{"
-       , template = "%StdinReader% | %cpu% | %memory% | %eno1% }-{ %date% %uname%"
+       , template = "%StdinReader% | %multicpu% %coretemp% | %memory% | %eno1% }-{ %date% %uname%"
        }
