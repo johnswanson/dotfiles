@@ -6,8 +6,8 @@ import XMonad.Util.Run
 main = xmonad =<< xmobar myConfig
 
 myConfig = defaultConfig
-	{ manageHook = manageDocks <+> manageHook defaultConfig
+    { manageHook = manageDocks <+> manageHook defaultConfig
     , layoutHook = avoidStruts $ layoutHook defaultConfig
     , terminal = "urxvt"
     , modMask = mod4Mask
-	}
+    }
