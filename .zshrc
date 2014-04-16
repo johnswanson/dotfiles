@@ -17,6 +17,7 @@ export GOMAXPROCS=8
 export BAT_CHARGE="/usr/local/bin/batcharge.py"
 alias ls="ls" # get rid of stupid colors.
 alias node="env NODE_NO_READLINE=1 rlwrap node"
+alias vidyo="env LD_PRELOAD=totally_ubuntu.so VidyoDesktop"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
