@@ -97,21 +97,6 @@ set shortmess+=I
 set splitbelow
 set splitright
 set encoding=utf-8
-if has("gui_running")
-  set guioptions=
-  set guicursor=i:block
-  highlight Cursor guifg=black guibg=cornflowerblue
-"    set guifont=Menlo\ Regular:h21
-	if &diff
-		set guifont=Source\ Code\ Pro\ Extralight:h22
-		set fu
-	else
-		set guifont=Source\ Code\ Pro\ Extralight:h22
-		"set fu
-	endif
-else
-  syntax on
-endif
 set colorcolumn=80
 
 nnoremap <Leader>r :Eval (user/reset)<CR>
