@@ -15,7 +15,6 @@
     Bundle 'kien/ctrlp.vim'
     Bundle 'tpope/vim-surround'
     Bundle 'altercation/vim-colors-solarized'
-
     " optional bundles
     " Bundle 'pangloss/vim-javascript'
     " Bundle 'kchmck/vim-coffee-script'
@@ -24,6 +23,8 @@
     " Bundle 'vim-scripts/JSON.vim'
     " Bundle 'goldfeld/vim-seek'
     " Bundle 'lukerandall/haskellmode-vim
+    " Bundle 'tpope/vim-fireplace'
+    " Bundle 'tpope/vim-classpath'
     if iCanHazVundle == 0
         echo "Installing Bundles, please ignore key map error messages"
         echo ""
@@ -112,3 +113,5 @@ else
   syntax on
 endif
 set colorcolumn=80
+
+nnoremap <Leader>r :Eval (user/reset)<CR>
