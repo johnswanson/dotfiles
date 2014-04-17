@@ -6,15 +6,15 @@ elif [[ `uname` == "Darwin" ]]; then
   platform='osx'
 fi
 
-ln -s ./.gitconfig ~/.gitconfig
-ln -s ./.tmux.conf ~/.tmux.conf
-ln -s ./.vimrc ~/.vimrc
-ln -s ./.zshrc ~/.zshrc
-git clone git@github.com:johnswanson/oh-my-zsh ~/.oh-my-zsh
+ln -s $PWD/.gitconfig $HOME/.gitconfig
+ln -s $PWD/.tmux.conf $HOME/.tmux.conf
+ln -s $PWD/.vimrc $HOME/.vimrc
+ln -s $PWD/.zshrc $HOME/.zshrc
+git clone git@github.com:johnswanson/oh-my-zsh $HOME/.oh-my-zsh
 
 if [[ $platform == "linux" ]]; then
-  ln -s ./.xinitrc ~/.xinitrc
-  ln -s ./.xmobarrc ~/.xmobarrc
-  mkdir ~/.xmonad
-  ln -s ./xmonad.hs ~/.xmonad/xmonad.hs
+  ln -s $PWD/.xinitrc $HOME/.xinitrc
+  ln -s $PWD/.xmobarrc $HOME/.xmobarrc
+  mkdir $HOME/.xmonad
+  ln -s $PWD/xmonad.hs $HOME/.xmonad/xmonad.hs
 fi
