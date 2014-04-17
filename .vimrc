@@ -1,35 +1,35 @@
-  set nocompatible
-  filetype off
-    let iCanHazVundle=1
-    let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-    if !filereadable(vundle_readme)
-        echo "Installing Vundle.."
-        echo ""
-        silent !mkdir -p ~/.vim/bundle
-        silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-        let iCanHazVundle=0
-    endif
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
-    Bundle 'gmarik/vundle'
-    Bundle 'kien/ctrlp.vim'
-    Bundle 'tpope/vim-surround'
-    Bundle 'altercation/vim-colors-solarized'
-    " optional bundles
-    " Bundle 'pangloss/vim-javascript'
-    " Bundle 'kchmck/vim-coffee-script'
-    " Bundle 'derekwyatt/vim-scala'
-    " Bundle 'guns/vim-clojure-static'
-    " Bundle 'vim-scripts/JSON.vim'
-    " Bundle 'goldfeld/vim-seek'
-    " Bundle 'lukerandall/haskellmode-vim
-    " Bundle 'tpope/vim-fireplace'
-    " Bundle 'tpope/vim-classpath'
-    if iCanHazVundle == 0
-        echo "Installing Bundles, please ignore key map error messages"
-        echo ""
-        :BundleInstall
-    endif
+set nocompatible
+filetype off
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle.."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    let iCanHazVundle=0
+endif
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'kien/ctrlp.vim'
+Bundle 'tpope/vim-surround'
+Bundle 'altercation/vim-colors-solarized'
+" optional bundles
+" Bundle 'pangloss/vim-javascript'
+" Bundle 'kchmck/vim-coffee-script'
+" Bundle 'derekwyatt/vim-scala'
+" Bundle 'guns/vim-clojure-static'
+" Bundle 'vim-scripts/JSON.vim'
+" Bundle 'goldfeld/vim-seek'
+" Bundle 'lukerandall/haskellmode-vim
+" Bundle 'tpope/vim-fireplace'
+" Bundle 'tpope/vim-classpath'
+if iCanHazVundle == 0
+    echo "Installing Bundles, please ignore key map error messages"
+    echo ""
+    :BundleInstall
+endif
 syntax on
 set nocompatible
 filetype plugin indent on
