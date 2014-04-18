@@ -18,4 +18,6 @@ if [[ $platform == "linux" ]]; then
   ln -s $PWD/.xmobarrc $HOME/.xmobarrc
   mkdir $HOME/.xmonad
   ln -s $PWD/xmonad.hs $HOME/.xmonad/xmonad.hs
+  mkdir -p $HOME/.config/cower
+  ln -s $PWD/cower_config $HOME/.config/cower/config
 fi
