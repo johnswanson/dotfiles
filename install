@@ -6,10 +6,10 @@ elif [[ `uname` == "Darwin" ]]; then
   platform='osx'
 fi
 
-ln -fs $PWD/.gitconfig $HOME/.gitconfig
-ln -fs $PWD/.tmux.conf $HOME/.tmux.conf
-ln -fs $PWD/.vimrc $HOME/.vimrc
-ln -fs $PWD/.zshrc $HOME/.zshrc
+ln -fs $HOME/.dotfiles/.gitconfig $HOME/.gitconfig
+ln -fs $HOME/.dotfiles/.tmux.conf $HOME/.tmux.conf
+ln -fs $HOME/.dotfiles/.vimrc $HOME/.vimrc
+ln -fs $HOME/.dotfiles/.zshrc $HOME/.zshrc
 
 git clone git@github.com:johnswanson/oh-my-zsh $HOME/.oh-my-zsh
 
@@ -22,10 +22,10 @@ git pull --rebase upstream master
 mkdir -p $HOME/{build,bin}
 
 if [[ $platform == "linux" ]]; then
-  ln -fs $PWD/.xinitrc $HOME/.xinitrc
-  ln -fs $PWD/.xmobarrc $HOME/.xmobarrc
+  ln -fs $HOME/.dotfiles/.xinitrc $HOME/.xinitrc
+  ln -fs $HOME/.dotfiles/.xmobarrc $HOME/.xmobarrc
   mkdir -p $HOME/.xmonad
-  ln -fs $PWD/xmonad.hs $HOME/.xmonad/xmonad.hs
+  ln -fs $HOME/.dotfiles/xmonad.hs $HOME/.xmonad/xmonad.hs
   mkdir -p $HOME/.config/cower
-  ln -fs $PWD/cower_config $HOME/.config/cower/config
+  ln -fs $HOME/.dotfiles/cower_config $HOME/.config/cower/config
 fi
