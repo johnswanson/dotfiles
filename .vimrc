@@ -16,6 +16,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'altercation/vim-colors-solarized'
 " optional bundles
+"Bundle 'mikewest/vimroom'
 " Bundle 'pangloss/vim-javascript'
 " Bundle 'kchmck/vim-coffee-script'
 " Bundle 'derekwyatt/vim-scala'
