@@ -28,4 +28,5 @@ if [[ $platform == "linux" ]]; then
   ln -fs $HOME/.dotfiles/xmonad.hs $HOME/.xmonad/xmonad.hs
   mkdir -p $HOME/.config/cower
   ln -fs $HOME/.dotfiles/cower_config $HOME/.config/cower/config
+  ln -fs $HOME/.dotfiles/.Xdefaults $HOME/.Xdefaults
 fi
