@@ -17,7 +17,7 @@ URxvt.depth:                32
 URxvt.geometry:             90x30
 URxvt.transparent:          false
 URxvt.fading:               0
-! URxvt.urgentOnBell:         true
+URxvt.urgentOnBell:         true
 ! URxvt.visualBell:           true
 URxvt.loginShell:           true
 URxvt.saveLines:            50
@@ -42,8 +42,8 @@ URxvt*saveLines: 16384
  
 ! Perl extensions
 URxvt.perl-ext-common:      default,matcher,font-size
-URxvt.matcher.button:       1
-URxvt.urlLauncher:          firefox
+URxvt.matcher.button:       2
+URxvt.url-launcher:         firefox
 URxvt.keysym.C-Up: perl:font-size:increase
 URxvt.keysym.C-Down: perl:font-size:decrease
  
@@ -97,3 +97,8 @@ URxvt.pointerBlank:         true
 !! white dark/light
 *color7: #eee8d5
 *color15: #fdf6e3
+
+xpdf*shadowThickness: 1
+xpdf*initialZoom: width
+xpdf*foreground: #2e3436
+xpdf*background: #eeeeee

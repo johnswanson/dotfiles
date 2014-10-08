@@ -1,23 +1,37 @@
 Config { bgColor = "black"
        , fgColor = "grey"
-       , font = "xft:Ubuntu Mono:size=8:antialias=true"
+       , font = "xft:Ubuntu Mono:size=14:antialias=true"
        , position = Top
-       , commands = [ Run Network "eno1" ["-L","0","-H","32","--normal","green","--high","red"] 10
-                    , Run CoreTemp ["-t", "<core0>C|<core1>C|<core2>C|<core3>C",
+       , commands = [ Run Network "eno1" [ "-t", "<dev>: <rx> <tx>"
+                                         , "-L", "0"
+                                         , "-H", "2000"
+                                         , "--normal", "green"
+                                         , "--high", "red"
+                                         , "--ddigits", "0"
+                                         , "--suffix", "True"
+                                         ] 10
+                    , Run Weather "KPDX" ["-t", "<skyCondition>, wind <wind>"] 36000
+                    , Run CoreTemp ["-t", "[<core0>.<core1>.<core2>.<core3>]",
+                                    "-m", "2",
                                     "-L", "40",
                                     "-H", "60",
                                     "-l", "green",
                                     "-n", "gray90",
                                     "-h", "red"] 50
-                    , Run MultiCpu ["-t","<autototal>",
+                    , Run MultiCpu ["-t","[<total0> <total1> <total2> <total3> <total4> <total5> <total6> <total7>]",
+                                    "-a", "r",
+                                    "-m", "2",
                                     "-L","3","-H","50",
                                     "--normal","green",
                                     "--high","red"] 10
-                    , Run Memory ["-t","Mem: <used> / <total>"] 10
+                    , Run Memory ["-t","[<usedbar>]",
+                                  "--bwidth", "16",
+                                  "-b", " ",
+                                  "-f", "#"] 10
                     , Run Date "%F %X" "date" 10
-                    , Run Com "uname" ["-s","-r"] "" 36000
+                    , Run Com "uname" ["-r"] "" 36000
                     , Run StdinReader
                     ]
        , alignSep = "}-{"
-       , template = "%StdinReader% | %multicpu% %coretemp% | %memory% | %eno1% }-{ %date% %uname%"
+       , template = " %StdinReader% | %multicpu% %coretemp% %memory% %eno1% }-{ %KPDX% || %date% | %uname%"
        }
