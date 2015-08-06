@@ -1,0 +1,10 @@
+emacs.d/.cask
+emacs.d/auto-save-list
+emacs.d/elpa
+emacs.d/nrepl-history
+emacs.d/projectile-bookmarks.eld
+emacs.d/projectile.cache
+emacs.d/recentf
+emacs.d/theme
+emacs.d/tramp
+emacs.d/var
