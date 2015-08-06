@@ -42,7 +42,7 @@ DISABLE_AUTO_TITLE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git pass)
 
 source $ZSH/oh-my-zsh.sh
 bindkey -v
@@ -50,11 +50,11 @@ bindkey "^K" history-beginning-search-backward
 bindkey "^J" history-beginning-search-forward
 
 
+PATH=$PATH:$HOME/.cabal-sandbox/bin
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:$HOME/bin
-PATH=$PATH:$HOME/.gem/ruby/2.1.0/bin
+PATH=$PATH:$HOME/.cask/bin
+PATH=$PATH:/usr/local/share/npm/bin
 
 # Customize to your needs...
 export PATH=$PATH:/usr/local/bin:/usr/bin:/usr/local/sbin:/bin:/usr/sbin:/sbin
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
