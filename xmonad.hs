@@ -13,7 +13,6 @@ main = do
                , focusedBorderColor = "#dc322f"
                , layoutHook = avoidStruts $ layoutHook defaultConfig
                , terminal = "urxvt"
-               , modMask = mod4Mask
                , logHook = dynamicLogWithPP $ xmobarPP {
                    ppOrder = \(ws:l:t:_) -> [ws,l]
                  , ppOutput = hPutStrLn h }

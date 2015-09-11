@@ -2,7 +2,7 @@ Config { bgColor = "black"
        , fgColor = "grey"
        , font = "xft:Ubuntu Mono:size=14:antialias=true"
        , position = Top
-       , commands = [ Run Network "eno1" [ "-t", "<dev>: <rx> <tx>"
+       , commands = [ Run Network "wlp1s0" [ "-t", "<dev>: <rx> <tx>"
                                          , "-L", "0"
                                          , "-H", "2000"
                                          , "--normal", "green"
@@ -11,14 +11,14 @@ Config { bgColor = "black"
                                          , "--suffix", "True"
                                          ] 10
                     , Run Weather "KPDX" ["-t", "<skyCondition>, wind <wind>"] 36000
-                    , Run CoreTemp ["-t", "[<core0>.<core1>.<core2>.<core3>]",
+                    , Run CoreTemp ["-t", "[<core0>.<core1>.<core2>]",
                                     "-m", "2",
                                     "-L", "40",
                                     "-H", "60",
                                     "-l", "green",
                                     "-n", "gray90",
                                     "-h", "red"] 50
-                    , Run MultiCpu ["-t","[<total0> <total1> <total2> <total3> <total4> <total5> <total6> <total7>]",
+                    , Run MultiCpu ["-t","[<total0> <total1> <total2> <total3>]",
                                     "-a", "r",
                                     "-m", "2",
                                     "-L","3","-H","50",
@@ -33,5 +33,5 @@ Config { bgColor = "black"
                     , Run StdinReader
                     ]
        , alignSep = "}-{"
-       , template = " %StdinReader% | %multicpu% %coretemp% %memory% %eno1% }-{ %KPDX% || %date% | %uname%"
+       , template = " %StdinReader% | %multicpu% %coretemp% %memory% %wlp1s0% }-{ %KPDX% || %date% | %uname%"
        }
