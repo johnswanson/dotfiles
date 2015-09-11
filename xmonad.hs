@@ -8,17 +8,17 @@ main = do
     h <- spawnPipe "xmobar"
     xmonad $ defaultConfig {
                  manageHook = manageDocks <+> manageHook defaultConfig
-               , borderWidth = 3
-               , normalBorderColor = "#eee8d5"
-               , focusedBorderColor = "#dc322f"
+               , borderWidth = 1
+               , normalBorderColor = "black"
+               , focusedBorderColor = "white"
                , layoutHook = avoidStruts $ layoutHook defaultConfig
                , terminal = "urxvt"
                , logHook = dynamicLogWithPP $ xmobarPP {
-                   ppOrder = \(ws:l:t:_) -> [ws,l]
+                   ppCurrent = xmobarColor "black" "" . wrap "[" "]"
+                 , ppOrder = \(ws:l:t:_) -> [ws,l]
                  , ppOutput = hPutStrLn h }
                } `additionalKeysP`
-               [ ("M-f", spawn "firefox")
+               [ ("M-c", spawn "/home/jds/bin/c")
                , ("M-e", spawn "emacs")
-               , ("M-s", spawn "skype")
                , ("M-v", spawn "vlc")
                ]

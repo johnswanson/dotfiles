@@ -19,5 +19,4 @@ fi
 xbindkeys
 xsetroot -cursor_name left_ptr
 xmodmap ~/.Xmodmap
-redshift -l 33.9:-117.9 -t 6500:2000 &
 exec xmonad

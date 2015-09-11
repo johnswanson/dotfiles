@@ -31,7 +31,7 @@ URxvt*font: xft:Ubuntu Mono:pixelsize=28
 /* URxvt*boldFont: xft:Ubuntu Mono:pixelsize=14 */
 
 ! Fix font space
-URxvt*letterSpace: -1
+! URxvt*letterSpace: -1
  
 ! Scrollbar
 URxvt.scrollStyle:          rxvt
@@ -41,15 +41,17 @@ URxvt.scrollBar:            false
 URxvt*saveLines: 16384
  
 ! Perl extensions
-URxvt.perl-ext-common:      default,matcher,font-size
-URxvt.matcher.button:       2
-URxvt.url-launcher:         firefox
-URxvt.keysym.C-Up: perl:font-size:increase
-URxvt.keysym.C-Down: perl:font-size:decrease
- 
+URxvt.perl-ext-common:      default,url-select,resize-font
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /home/jds/bin/c
+URxvt.url-select.underline: true
+URxvt.resize-font.smaller: C-Down
+URxvt.resize-font.bigger: C-Up
+URxvt.iso14755: false
+URxvt.iso14755_52: false
  
 ! Cursor
-URxvt.cursorBlink:          true
+URxvt.cursorBlink:          false
 URxvt.cursorColor:          #657b83
 URxvt.cursorUnderline:      false
  

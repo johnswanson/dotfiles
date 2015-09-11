@@ -1,37 +1,40 @@
-Config { bgColor = "black"
-       , fgColor = "grey"
-       , font = "xft:Ubuntu Mono:size=14:antialias=true"
-       , position = Top
-       , commands = [ Run Network "wlp1s0" [ "-t", "<dev>: <rx> <tx>"
-                                         , "-L", "0"
-                                         , "-H", "2000"
-                                         , "--normal", "green"
-                                         , "--high", "red"
+Config { bgColor = "white"
+       , fgColor = "black"
+       , border = BottomB
+       , borderColor = "black"
+       , borderWidth = 3
+       , font = "xft:DejaVu Sans Mono:size=20:antialias=true"
+       , position = TopSize C 100 45
+       , commands = [ Run Network "wlp1s0" [ "-t", "[<txvbar>↑ <rxvbar>↓]"
+                                         , "-L", "1000"
+                                         , "-H", "10000"
+                                         , "--normal", "#859900"
+                                         , "--high", "#dc322f"
                                          , "--ddigits", "0"
                                          , "--suffix", "True"
                                          ] 10
-                    , Run Weather "KPDX" ["-t", "<skyCondition>, wind <wind>"] 36000
-                    , Run CoreTemp ["-t", "[<core0>.<core1>.<core2>]",
+                    , Run Battery ["-t", "<left>% <timeleft> <leftvbar>",
+                                   "-L", "10", "-H", "80",
+                                   "--",
+                                   "-i", "", "-o", "",
+                                   "-L", "-15", "-H", "-5",
+                                   "-l", "#dc322f", "-m", "blue", "-h", "#859900"] 100
+                    , Run CoreTemp ["-t", "[temp: <core0>° <core1>° <core2>°]",
                                     "-m", "2",
                                     "-L", "40",
-                                    "-H", "60",
-                                    "-l", "green",
-                                    "-n", "gray90",
-                                    "-h", "red"] 50
-                    , Run MultiCpu ["-t","[<total0> <total1> <total2> <total3>]",
+                                    "-H", "60"] 50
+                    , Run MultiCpu ["-t","[cpu:<autovbar>]",
                                     "-a", "r",
                                     "-m", "2",
                                     "-L","3","-H","50",
-                                    "--normal","green",
-                                    "--high","red"] 10
-                    , Run Memory ["-t","[<usedbar>]",
-                                  "--bwidth", "16",
-                                  "-b", " ",
-                                  "-f", "#"] 10
+                                    "--low", "#859900",
+                                    "--normal","#859900",
+                                    "--high","#dc322f"] 20
+                    , Run Memory ["-t","[mem:<usedvbar>]"] 100
                     , Run Date "%F %X" "date" 10
                     , Run Com "uname" ["-r"] "" 36000
                     , Run StdinReader
                     ]
-       , alignSep = "}-{"
-       , template = " %StdinReader% | %multicpu% %coretemp% %memory% %wlp1s0% }-{ %KPDX% || %date% | %uname%"
+       , alignSep = "}{"
+       , template = " %StdinReader%     %multicpu%  %memory%  %coretemp%  %wlp1s0% }{ [%battery%] [ %date% ] [%uname%]"
        }
