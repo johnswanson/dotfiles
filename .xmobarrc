@@ -1,28 +1,21 @@
 Config { bgColor = "white"
        , fgColor = "black"
-       , border = BottomB
-       , borderColor = "black"
-       , borderWidth = 3
-       , font = "xft:DejaVu Sans Mono:size=20:antialias=true"
-       , position = TopSize C 100 45
-       , commands = [ Run Network "wlp1s0" [ "-t", "[<txvbar>↑ <rxvbar>↓]"
-                                         , "-L", "1000"
-                                         , "-H", "10000"
-                                         , "--normal", "#859900"
-                                         , "--high", "#dc322f"
+       , font = "xft:Essential PragmataPro:size=18:antialias=true"
+       , position = TopSize C 100 30
+       , commands = [ Run Network "wlp1s0" [ "-t", "[<fc=#dc322f><tx></fc>↑ ↓<fc=#859900><rx></fc>]"
                                          , "--ddigits", "0"
                                          , "--suffix", "True"
                                          ] 10
-                    , Run Battery ["-t", "<left>% <timeleft> <leftvbar>",
-                                   "-L", "10", "-H", "80",
-                                   "--",
-                                   "-i", "", "-o", "",
-                                   "-L", "-15", "-H", "-5",
-                                   "-l", "#dc322f", "-m", "blue", "-h", "#859900"] 100
+                    , Run Battery ["-t", "batt:<timeleft> <leftvbar> <left>%",
+                                   "-L", "20", "-H", "80",
+                                   "--normal", "#93a1a1",
+                                   "--high", "#859900",
+                                   "--low", "#dc322f"] 100
                     , Run CoreTemp ["-t", "[temp: <core0>° <core1>° <core2>°]",
                                     "-m", "2",
                                     "-L", "40",
-                                    "-H", "60"] 50
+                                    "-H", "60",
+                                    "--high", "#dc322f"] 50
                     , Run MultiCpu ["-t","[cpu:<autovbar>]",
                                     "-a", "r",
                                     "-m", "2",
@@ -30,11 +23,11 @@ Config { bgColor = "white"
                                     "--low", "#859900",
                                     "--normal","#859900",
                                     "--high","#dc322f"] 20
-                    , Run Memory ["-t","[mem:<usedvbar>]"] 100
+                    , Run Memory ["-t","[mem:<usedratio>%]"] 100
                     , Run Date "%F %X" "date" 10
                     , Run Com "uname" ["-r"] "" 36000
                     , Run StdinReader
                     ]
        , alignSep = "}{"
-       , template = " %StdinReader%     %multicpu%  %memory%  %coretemp%  %wlp1s0% }{ [%battery%] [ %date% ] [%uname%]"
+       , template = " %StdinReader% %multicpu% %coretemp% %memory% %wlp1s0% }{ [%battery%] [ %date% ] [%uname%]"
        }
