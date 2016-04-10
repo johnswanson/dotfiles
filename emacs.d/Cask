@@ -54,4 +54,5 @@
 (depends-on "recentf")
 (depends-on "company")
 (depends-on "slamhound")
+(depends-on "base16-theme")
 

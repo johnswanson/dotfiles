@@ -5,6 +5,7 @@
 (cask-initialize)
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
+(add-to-list 'load-path "~/.emacs.d/plugins/evil-org-mode")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (require 'use-package)
 (require 'dockerfile-mode)
@@ -41,6 +42,15 @@
 
 (setq auto-save-default nil)
 (setq make-backup-files nil)
+
+(require 'org)
+(require 'evil-org)
+(require 'org-habit)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-agenda-files (list "~/org/work.org"
+														 "~/org/home.org"))
+(setq org-log-done t)
 
 (use-package powerline
   :init
@@ -275,7 +285,7 @@
              :init (global-git-gutter-mode t))
 
 (use-package smart-parens
-             :init (smartparens-global-mode t))
+	:init (smartparens-global-mode t))
 
 (use-package ag
              :config
@@ -325,7 +335,7 @@ buffer is not visiting a file."
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
 	 (quote
-		("2a051a3f76f66920ce6f38a11f406bd2f7f18fb57b32c5661879e870661408aa" default))))
+		("f21caace402180ab3dc5157d2bb843c4daafbe64aadc362c9f4558ac17ce43a2" "8e3f020f1ce69cfa0c1ebee4e198feb28dd7eb31b7d77927e9c790819210c654" "b4ec581daad15aa7020b722523dc6bcea850bfbdbe31bfeb11c45ea51899bd75" "aed73c6d0afcf2232bb25ed2d872c7a1c4f1bda6759f84afc24de6a1aec93da8" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "2a051a3f76f66920ce6f38a11f406bd2f7f18fb57b32c5661879e870661408aa" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
