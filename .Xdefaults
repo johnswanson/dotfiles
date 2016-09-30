@@ -31,7 +31,7 @@ URxvt*font: xft:Ubuntu Mono:pixelsize=28:antialias=true
 /* URxvt*boldFont: xft:Ubuntu Mono:pixelsize=14 */
 
 ! Fix font space
-! URxvt*letterSpace: -1
+URxvt*letterSpace: -2
  
 ! Scrollbar
 URxvt.scrollStyle:          rxvt

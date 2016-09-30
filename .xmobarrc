@@ -1,7 +1,7 @@
-Config { bgColor = "#fff"
-       , fgColor = "#444"
+Config { bgColor = "#333"
+       , fgColor = "#aaa"
        , pickBroadest = True
-       , font = "xft:Essential PragmataPro:size=12"
+       , font = "xft:Essential PragmataPro:size=18"
        , position = TopSize C 100 25
        , commands = [
 			 Run Network "enp3s0"
@@ -11,7 +11,7 @@ Config { bgColor = "#fff"
                       , "-w", "6",
                         "-a", "r"
                       ] 10
-										, Run Network "eno1"
+										, Run Network "wlp10s0"
                       [ "-t", "[<fc=#dc322f><tx></fc> <fc=#859900><rx></fc>]"
                       , "--ddigits", "0"
                       , "--suffix", "True"
@@ -44,5 +44,5 @@ Config { bgColor = "#fff"
                     , Run StdinReader
                     ]
        , alignSep = "}{"
-       , template = "%StdinReader% %multicpu% %coretemp% %memory% %enp3s0% %eno1% %uptime% }{ [%date%] %uname%"
+       , template = "%StdinReader% %multicpu% %coretemp% %memory% %enp3s0% %wlp10s0% %uptime% }{ [%date%] %uname%"
        }

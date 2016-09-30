@@ -19,4 +19,5 @@ fi
 xbindkeys
 xsetroot -cursor_name left_ptr
 xmodmap ~/.Xmodmap
+~/.screenlayout/home.sh
 exec xmonad
