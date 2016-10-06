@@ -26,8 +26,8 @@ myBar = "xmobar"
 
 myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
 
-myKeys = [ ("M-c", spawn "chromium --kiosk google.com --remote-debugging-port=9222")
-         , ("M-y", spawn "chromium --kiosk $(xclip -selection primary -out)")
+myKeys = [ ("M-c", spawn "chromium google.com --remote-debugging-port=9222")
+         , ("M-y", spawn "chromium $(xclip -selection primary -out)")
          , ("M-x", spawn "slock")
          , ("M-e", spawn "emacs")
          , ("M-p", spawn "dmenu_run -fn 'Ubuntu Mono-32' -l 16")
