@@ -112,7 +112,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 18
+                               :size 32
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -275,6 +275,7 @@ you should place your code here."
   (define-key evil-motion-state-map [down-mouse-2] 'silence)
   (define-key evil-motion-state-map [mouse-2] 'silence)
   (fset 'evil-visual-update-x-selection 'ignore)
+  (setq cider-auto-jump-to-error nil)
 
   )
 
