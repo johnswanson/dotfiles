@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -euo pipefail
+
+python /home/jds/build/hosts/updateHostsFile.py -o /etc/adblock -a --skipstatichosts
