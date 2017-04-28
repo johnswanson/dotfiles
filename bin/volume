@@ -1,0 +1,21 @@
+#!/bin/bash
+
+volumeup () {
+  pactl set-sink-volume @DEFAULT_SINK@ +10%;
+  canberra-gtk-play -i message -d "volume-up";
+}
+volumedown () {
+  pactl set-sink-volume @DEFAULT_SINK@ -10%;
+  canberra-gtk-play -i message -d "volume-down";
+}
+mute () {
+  pactl set-sink-mute @DEFAULT_SINK@ toggle;
+  canberra-gtk-play -i message -d "mute";
+}
+
+case "$1" in
+    -i|--increase) volumeup;;
+    -d|--decrease) volumedown;;
+		-m|--mute)     mute;;
+esac
+

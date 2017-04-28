@@ -1,0 +1,11 @@
+#!/bin/bash
+set -euo pipefail
+
+FILENAME=$(date +"%Y-%m-%d_%H.%M.%S.png")
+FILEPATH="/tmp/$FILENAME"
+URL="https://jds.objects-us-west-1.dream.io/screenshots/$FILENAME"
+scrot "$FILEPATH" -s
+canberra-gtk-play -i screen-capture -d "screenshot taken"
+s3cmd put -P $FILEPATH s3://jds/screenshots/
+echo -n $URL | xclip -selection clipboard
+canberra-gtk-play -i complete -d "screenshot uploaded"

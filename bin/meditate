@@ -1,0 +1,11 @@
+#!/bin/bash
+set -euo pipefail
+
+MINUTES=${1:-10}
+
+khal new -a pom $(date +"%H:%M") ${MINUTES}m meditate
+play "~/.sounds/Looking Up.wav"
+
+sleep $(echo "$MINUTES*60" | bc)
+
+play "~/.sounds/Gentle Roll.wav"

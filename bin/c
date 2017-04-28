@@ -1,0 +1,3 @@
+#!/bin/bash
+
+chromium --new-window --force-device-scale-factor=2 $@

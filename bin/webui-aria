@@ -1,0 +1,4 @@
+#!/bin/bash
+set -euo pipefail
+
+c file:///home/jds/build/webui-aria2/index.html 

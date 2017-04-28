@@ -1,0 +1,59 @@
+#!/usr/bin/python
+
+import sys
+import os
+from subprocess import call
+from datetime import datetime, timedelta
+
+NAME_FILENAME = os.path.expanduser("~/.current_pomodoro")
+SESSION_FILENAME = os.path.expanduser("~/.pomodoro_session")
+
+def touch(fname, mode=0o666, dir_fd=None, **kwargs):
+    flags = os.O_CREAT | os.O_APPEND
+    with os.fdopen(os.open(fname, flags=flags, mode=mode, dir_fd=dir_fd)) as f:
+        os.utime(f.fileno() if os.utime in os.supports_fd else fname,
+            dir_fd=None if os.supports_fd else dir_fd, **kwargs)
+
+def done():
+    start = datetime.fromtimestamp(os.path.getmtime(SESSION_FILENAME))
+    now = datetime.now()
+    with open(NAME_FILENAME) as f:
+        name = f.read()
+        call(["khal", "new", "-a", "pom", start.strftime("%H:%M"), now.strftime("%H:%M"), name])
+        call(["beeminder", "pomos", "1", name])
+    os.remove(NAME_FILENAME)
+
+def cleanup():
+    os.remove(SESSION_FILENAME)
+    os.remove(NAME_FILENAME)
+
+def abort():
+    with open(NAME_FILENAME) as f:
+        print("aborted: {}".format(f.read()))
+    cleanup()
+
+def start(args):
+    touch(SESSION_FILENAME)
+    name = " ".join(args)
+    with open(NAME_FILENAME, 'w') as f:
+        f.write(name)
+
+USAGE = """
+    {name} [name]\t\tstart a pomodoro named \"name\"
+    {name} done\t\t\tfinish the pomodoro
+    {name} abort\t\tabort the pomodoro
+""".format(name=sys.argv[0])
+
+if len(sys.argv) == 1:
+    print("USAGE: {}\n".format(USAGE))
+    sys.exit()
+
+CMD = sys.argv[1]
+
+if CMD == "done":
+    done()
+elif CMD == "abort":
+    abort()
+else:
+    start(sys.argv[1:])
+

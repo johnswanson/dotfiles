@@ -1,0 +1,7 @@
+#!/bin/bash
+
+while true;
+do
+  scrot "$HOME/projects/maniac/%Y-%m-%d-%H.%M.%S.png"
+  sleep 60
+done
