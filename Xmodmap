@@ -1,3 +1,0 @@
-clear Mod4
-clear Control
-add Control = Super_L Control_L Control_R
