@@ -1,0 +1,9 @@
+[Unit]
+Description=Aria2
+
+[Service]
+ExecStart=/usr/bin/aria2c --log=-
+Restart=always
+
+[Install]
+WantedBy=default.target
