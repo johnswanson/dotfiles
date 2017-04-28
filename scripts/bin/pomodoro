@@ -33,7 +33,10 @@ def abort():
     cleanup()
 
 def start(args):
-    touch(SESSION_FILENAME)
+    if os.path.isfile(NAME_FILENAME):
+        with open(NAME_FILENAME, 'r') as f:
+            print("previous pomodoro was never closed: {}".format(f.read()))
+        sys.exit()
     name = " ".join(args)
     with open(NAME_FILENAME, 'w') as f:
         f.write(name)
