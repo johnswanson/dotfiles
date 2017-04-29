@@ -37,6 +37,7 @@ def start(args):
         with open(NAME_FILENAME, 'r') as f:
             print("previous pomodoro was never closed: {}".format(f.read()))
         sys.exit()
+    touch(SESSION_FILENAME)
     name = " ".join(args)
     with open(NAME_FILENAME, 'w') as f:
         f.write(name)
