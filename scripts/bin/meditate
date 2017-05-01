@@ -2,10 +2,14 @@
 set -euo pipefail
 
 MINUTES=${1:-10}
+START_TIME=$(date +"%H:%M")
 
-khal new -a pom $(date +"%H:%M") ${MINUTES}m meditate
 play "~/.sounds/Looking Up.wav"
 
 sleep $(echo "$MINUTES*60" | bc)
 
 play "~/.sounds/Gentle Roll.wav"
+echo "adding it to beeminder!"
+sleep 5
+beeminder maditat 1
+khal new -a pom ${START_TIME} ${MINUTES}m meditate
