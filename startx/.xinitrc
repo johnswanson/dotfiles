@@ -19,6 +19,7 @@ fi
 xbindkeys
 xsetroot -cursor_name left_ptr
 xautolock -time 2 -locker "slock" &
+dunst &
 xmodmap ~/.Xmodmap
 xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0 || echo "failed, that's ok"
 if [ -x /home/jds/.screenlayout/home.sh ]

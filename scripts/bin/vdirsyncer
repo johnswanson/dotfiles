@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/home/jds/venvs/vdirsyncer/bin/vdirsyncer $@
+/home/jds/venvs/vdirsyncer/bin/vdirsyncer $@ >/dev/null 2>/dev/null
