@@ -13,6 +13,9 @@ if [ "$TERM" != "linux" ]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
+HISTSIZE=-1
+HISTFILESIZE=-1
+
 alias ls="ls --color"
 
 export NPM_PACKAGES="${HOME}/.npm-packages"
