@@ -17,20 +17,19 @@ def touch(fname, mode=0o666, dir_fd=None, **kwargs):
 def done():
     start = datetime.fromtimestamp(os.path.getmtime(SESSION_FILENAME))
     now = datetime.now()
+    with open(SESSION_FILENAME) as f:
+        minutes = f.read().split(" ")[0] or "25"
     with open(NAME_FILENAME) as f:
         name = f.read()
-        call(["khal", "new", "-a", "pom", start.strftime("%H:%M"), now.strftime("%H:%M"), name])
-        call(["beeminder", "pomos", "1", name])
-    os.remove(NAME_FILENAME)
-
-def cleanup():
-    os.remove(SESSION_FILENAME)
+    call(["khal", "new", "-a", "pom", start.strftime("%H:%M"), now.strftime("%H:%M"), name])
+    call(["beeminder", "pomos", "1", name])
+    call(["beeminder", "tacodoros", minutes, name])
     os.remove(NAME_FILENAME)
 
 def abort():
     with open(NAME_FILENAME) as f:
         print("aborted: {}".format(f.read()))
-    cleanup()
+    os.remove(NAME_FILENAME)
 
 def start(args):
     if os.path.isfile(NAME_FILENAME):
