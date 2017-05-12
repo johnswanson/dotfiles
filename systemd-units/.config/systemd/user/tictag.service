@@ -2,7 +2,7 @@
 Description=Tictag Client
 
 [Service]
-EnvironmentFile=/home/jds/projects/tictag-client/client.agh.env
+EnvironmentFile=/home/jds/projects/tictag-client/client.env
 ExecStart=/usr/bin/java -jar /home/jds/projects/tictag-client/target/uberjar/tictag-client-0.1.0-SNAPSHOT-standalone.jar
 Restart=always
 
