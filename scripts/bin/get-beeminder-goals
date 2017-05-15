@@ -1,8 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-MAX_CACHE=60
-
 function displaytime {
   local T=$1
   local D=$((T/60/60/24))
@@ -15,30 +13,16 @@ function displaytime {
   (( $D > 0 || $H > 0 || $M > 0 ))
 }
 
-function get_goals {
-    if [ ! -f /tmp/.beeminder-goal-cache ]; then
-        goals > /tmp/.beeminder-goal-cache
-    fi
-
-    CACHE_MODIFIED=`stat -c '%Y' /tmp/.beeminder-goal-cache`
-    NOW=`date +'%s'`
-    AGE=`expr $NOW - $CACHE_MODIFIED`
-    if [ "$AGE" -gt "$MAX_CACHE" ]; then
-        goals > /tmp/.beeminder-goal-cache
-    fi
-    echo $(cat /tmp/.beeminder-goal-cache)
-}
-
-
 while true; do
-    goals=$(get_goals)
-    for v in $(echo $goals | jq -r 'map({slug, losedate}) | sort_by(.losedate) | .[0:5] | map(.slug + "," + ( .losedate | tostring )) | .[]'); do
+    for v in $(get-goals | head -n 3); do
         IFS=',' read -ra ADDR <<< "$v"
-        slug=${ADDR[0]}
-        due=${ADDR[1]}
+        due=${ADDR[0]}
+        really_due=`expr $due + 1`
+        slugs=${ADDR[@]:1}
         NOW=`date +'%s'`
         TIME_UNTIL_DUE=`expr $due - $NOW`
         HR_TIME_UNTIL_DUE=`displaytime $TIME_UNTIL_DUE`
+        DUE=`date -d"@$really_due" +"%H:%M"`
         if [ $TIME_UNTIL_DUE -lt 43200 ]; then
             COLOR="#dc322f"
             DUE_TODAY=" <fc=$COLOR>(!)</fc>"
@@ -49,7 +33,7 @@ while true; do
             COLOR="#ffffff"
             DUE_TODAY=""
         fi
-        echo "<fc=$COLOR>$slug</fc> $HR_TIME_UNTIL_DUE$DUE_TODAY"
-        sleep 10
+        echo "<fc=$COLOR>$slugs</fc> $DUE ($HR_TIME_UNTIL_DUE)$DUE_TODAY"
+        sleep 2
     done
 done

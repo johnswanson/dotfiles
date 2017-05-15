@@ -1,0 +1,16 @@
+#!/bin/bash
+set -euo pipefail
+
+MAX_CACHE=60
+
+if [ ! -f /tmp/.beeminder-goal-cache ]; then
+    goals > /tmp/.beeminder-goal-cache
+fi
+
+CACHE_MODIFIED=`stat -c '%Y' /tmp/.beeminder-goal-cache`
+NOW=`date +'%s'`
+AGE=`expr $NOW - $CACHE_MODIFIED`
+if [ "$AGE" -gt "$MAX_CACHE" ]; then
+    goals > /tmp/.beeminder-goal-cache
+fi
+cat /tmp/.beeminder-goal-cache | jq -r 'group_by(.losedate) | map({losedate: .[0].losedate, slugs: map(.slug)}) | map( (.losedate | tostring) + "," + (.slugs | join(",")) ) | .[]'
