@@ -46,5 +46,5 @@ Config { bgColor = "#333"
                     , Run StdinReader
                     ]
        , alignSep = "}{"
-       , template = "%StdinReader% %multicpu% %coretemp% %memory% %enp3s0% %wlp10s0% %uptime% }{ [<fc=#dc322f>%beeminder-goals%</fc>] [%pomodoro%] [%date%] %uname%"
+       , template = "%StdinReader% %multicpu% %coretemp% %memory% %enp3s0% %wlp10s0% %uptime% }{ [%beeminder-goals%] [%pomodoro%] [%date%] %uname%"
        }

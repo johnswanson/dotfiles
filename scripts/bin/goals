@@ -2,7 +2,7 @@
 set -euo pipefail
 
 source ~/.beeminder-auth
-curl https://www.beeminder.com/api/v1/users/me/goals.json?auth_token=$BEEMINDER_AUTH_TOKEN
+curl --silent https://www.beeminder.com/api/v1/users/me/goals.json?auth_token=$BEEMINDER_AUTH_TOKEN
 
 
 
