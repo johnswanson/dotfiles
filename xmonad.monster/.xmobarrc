@@ -11,6 +11,7 @@ Config { bgColor = "#333"
                       , "-w", "6",
                         "-a", "r"
                       ] 10
+                    , Run CommandReader "~/bin/get-beeminder-goals" "beeminder-goals"
                     , Run CommandReader "~/.pymodoro/pymodoro.py" "pomodoro"
 										, Run Network "wlp10s0"
                       [ "-t", "[<fc=#dc322f><tx></fc> <fc=#859900><rx></fc>]"
@@ -45,5 +46,5 @@ Config { bgColor = "#333"
                     , Run StdinReader
                     ]
        , alignSep = "}{"
-       , template = "%StdinReader% %multicpu% %coretemp% %memory% %enp3s0% %wlp10s0% %uptime% }{ [%pomodoro%] [%date%] %uname%"
+       , template = "%StdinReader% %multicpu% %coretemp% %memory% %enp3s0% %wlp10s0% %uptime% }{ [<fc=#dc322f>%beeminder-goals%</fc>] [%pomodoro%] [%date%] %uname%"
        }

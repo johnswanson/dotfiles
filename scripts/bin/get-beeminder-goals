@@ -1,0 +1,39 @@
+#!/bin/bash
+set -euo pipefail
+
+function displaytime {
+  local T=$1
+  local D=$((T/60/60/24))
+  local H=$((T/60/60%24))
+  local M=$((T/60%60))
+  local S=$((T%60))
+  (( $D > 0 )) && printf '%d days ' $D
+  (( $H > 0 )) && printf '%d hours ' $H
+  (( $M > 0 )) && printf '%d minutes' $M
+  (( $D > 0 || $H > 0 || $M > 0 ))
+}
+
+MAX_CACHE=60
+
+while true; do
+    if [ ! -f /tmp/.beeminder-goal-cache ]; then
+        goals > /tmp/.beeminder-goal-cache
+    fi
+
+    CACHE_MODIFIED=`stat -c '%Y' /tmp/.beeminder-goal-cache`
+    NOW=`date +'%s'`
+    AGE=`expr $NOW - $CACHE_MODIFIED`
+    if [ "$AGE" -gt "$MAX_CACHE" ]; then
+        goals > /tmp/.beeminder-goal-cache
+    fi
+
+    for v in $(cat /tmp/.beeminder-goal-cache | jq -r 'def minimal_by(f): (map(f) | min) as $mx | .[] | select(f == $mx); minimal_by(.losedate) | .slug + "," + ( .losedate | tostring )'); do
+        IFS=',' read -ra ADDR <<< "$v"
+        slug=${ADDR[0]}
+        due=${ADDR[1]}
+        TIME_UNTIL_DUE=`expr $due - $NOW`
+        HR_TIME_UNTIL_DUE=`displaytime $TIME_UNTIL_DUE`
+        echo "$slug $HR_TIME_UNTIL_DUE"
+        sleep 10
+    done
+done
