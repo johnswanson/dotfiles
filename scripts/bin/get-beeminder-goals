@@ -30,8 +30,7 @@ while true; do
         else
             COLOR="#ffffff"
         fi
-        slugs=$(printf "%33s %s" $slugs)
-        echo "<fc=$COLOR>$HR_TIME_UNTIL_DUE until $DUE $slugs</fc>"
+        echo "$HR_TIME_UNTIL_DUE until $DUE <fc=$COLOR>$slugs</fc>"
         sleep 5
     done
 done
