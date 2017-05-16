@@ -10,11 +10,11 @@ function displaytime {
   (( $D > 0 )) && printf '%d days ' $D
   (( $H > 0 )) && printf '%d hours ' $H
   (( $M > 0 )) && printf '%d minutes' $M
-  (( $D > 0 || $H > 0 || $M > 0 ))
 }
 
 while true; do
-    for v in $(get-goals | head -n 3); do
+    count=3
+    for v in $(get-goals | head -n "$count"); do
         IFS=',' read -ra ADDR <<< "$v"
         due=${ADDR[0]}
         really_due=`expr $due + 1`
@@ -25,15 +25,13 @@ while true; do
         DUE=`date -d"@$really_due" +"%H:%M"`
         if [ $TIME_UNTIL_DUE -lt 43200 ]; then
             COLOR="#dc322f"
-            DUE_TODAY=" <fc=$COLOR>(!)</fc>"
         elif [ $TIME_UNTIL_DUE -lt 129600 ]; then
             COLOR="#859900"
-            DUE_TODAY=""
         else
             COLOR="#ffffff"
-            DUE_TODAY=""
         fi
-        echo "<fc=$COLOR>$slugs</fc> $DUE ($HR_TIME_UNTIL_DUE)$DUE_TODAY"
-        sleep 2
+        slugs=$(printf "%33s %s" $slugs)
+        echo "<fc=$COLOR>$HR_TIME_UNTIL_DUE until $DUE $slugs</fc>"
+        sleep 5
     done
 done
