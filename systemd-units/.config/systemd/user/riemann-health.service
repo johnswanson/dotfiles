@@ -1,0 +1,10 @@
+Unit]
+Description=Riemann Health
+
+[Service]
+Type=simple
+ExecStart=/home/jds/.gem/ruby/2.4.0/bin/riemann-health --host mkn.io
+Restart=always
+
+[Install]
+WantedBy=default.target
