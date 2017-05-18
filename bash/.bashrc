@@ -22,6 +22,7 @@ export NPM_PACKAGES="${HOME}/.npm-packages"
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
 PATH=$PATH:$NPM_PACKAGES/bin
+PATH=$PATH:$HOME/.gem/ruby/2.4.0/bin
 PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 unset MANPATH # delete if you already modified MANPATH elsewhere in your config
 MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
