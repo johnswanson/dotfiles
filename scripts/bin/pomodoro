@@ -21,7 +21,7 @@ def done():
         minutes = f.read().split(" ")[0] or "25"
     with open(NAME_FILENAME) as f:
         name = f.read()
-    call(["khal", "new", "-a", "pom", start.strftime("%H:%M"), now.strftime("%H:%M"), name])
+    call(["khal", "new", "-a", "pom", start.strftime("%H:%M"), "{}m".format(minutes), name])
     call(["beeminder", "pomos", "1", name])
     call(["beeminder", "tacodoros", minutes, name])
     os.remove(NAME_FILENAME)
