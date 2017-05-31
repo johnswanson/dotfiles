@@ -1,0 +1,5 @@
+set gui=none
+highlight CmdLine -append font-size: 2em
+highlight CompDesc -append font-size: 2em
+highlight CompResult -append font-size: 2em
+set defsearch=google
