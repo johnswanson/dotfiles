@@ -41,14 +41,15 @@ def start(args):
     with open(NAME_FILENAME, 'w') as f:
         f.write(name)
 
-USAGE = """
-    {name} [name]\t\tstart a pomodoro named \"name\"
-    {name} done\t\t\tfinish the pomodoro
-    {name} abort\t\tabort the pomodoro
-""".format(name=sys.argv[0])
+CURRENT_POMODORO_NAME="<none>"
+if os.path.isfile(NAME_FILENAME):
+    with open(NAME_FILENAME) as f:
+        CURRENT_POMODORO_NAME = f.read()
+
+current_msg = "current: {name}".format(name=CURRENT_POMODORO_NAME)
 
 if len(sys.argv) == 1:
-    print("USAGE: {}\n".format(USAGE))
+    print(current_msg)
     sys.exit()
 
 CMD = sys.argv[1]
