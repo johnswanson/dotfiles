@@ -1,0 +1,10 @@
+#!/bin/bash
+
+$EDITOR "~/Dropbox/org/$(date +'%Y-%m-%d').md"
+
+read -p "Did you do it? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    beeminder evenings 1
+fi

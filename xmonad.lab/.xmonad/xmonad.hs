@@ -3,6 +3,7 @@ import qualified XMonad.StackSet as W
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.SetWMName
 import XMonad.Util.Run
 import XMonad.Util.EZConfig(additionalKeysP, additionalKeys)
 import XMonad.Layout.Circle
@@ -26,9 +27,9 @@ myBar = "xmobar"
 
 myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
 
-myKeys = [ ("M-c", spawn "c")
-         , ("M-y", spawn "c $(xclip -selection primary -out)")
-         , ("M-e", spawn "raise-or-launch emacs 'emacs -a \'\' -c'")
+myKeys = [ ("M-c", spawn "firefox")
+         , ("M-y", spawn "firefox $(xclip -selection primary -out)")
+         , ("M-e", spawn "emacsclient -c")
          , ("M-x", spawn "slock")
          , ("M-p", spawn "dmenu_run -fn 'Ubuntu Mono-32' -l 16")
          , ("M-v", spawn "vlc")
@@ -40,13 +41,14 @@ myKeys = [ ("M-c", spawn "c")
            ]
  
 myConfig = defaultConfig {
-  manageHook = manageDocks <+> (className =? "X-Plane" --> doFloat) <+> (className =? "Kerbal Space Program" --> doFloat) <+> manageHook defaultConfig
+  startupHook = setWMName "LG3D"
+  , manageHook = manageDocks <+> (className =? "X-Plane" --> doFloat) <+> (className =? "Kerbal Space Program" --> doFloat) <+> manageHook defaultConfig
   , borderWidth = 2
   , normalBorderColor = "#839496"
   , focusedBorderColor = "#d33682"
   , layoutHook = myLayout
   , handleEventHook = handleEventHook defaultConfig <+> docksEventHook
-  , terminal = "urxvt"
+  , terminal = "alacritty"
   } `additionalKeysP` myKeys
 
 myPP = xmobarPP {

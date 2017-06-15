@@ -22,7 +22,6 @@ def done():
     with open(NAME_FILENAME) as f:
         name = f.read()
     call(["khal", "new", "-a", "pom", start.strftime("%H:%M"), "{}m".format(minutes), name])
-    call(["beeminder", "pomos", "1", name])
     call(["beeminder", "tacodoros", minutes, name])
     os.remove(NAME_FILENAME)
 

@@ -39,3 +39,5 @@ PATH=$PATH:/usr/local/share/npm/bin
 export PATH=$PATH:/usr/local/bin:/usr/bin:/usr/local/sbin:/bin:/usr/sbin:/sbin
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export NDN_ROOT=$HOME/ndn/ndn
+
+export EDITOR=/home/jds/bin/e
