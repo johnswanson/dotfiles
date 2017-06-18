@@ -5,13 +5,24 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-function _update_ps1() {
-    PS1="$(~/.powerline-shell.py --cwd-mode plain $? 2> /dev/null)"
-}
+# function _update_ps1() {
+    # PS1="$(~/.powerline-shell.py --cwd-mode plain $? 2> /dev/null)"
+# }
+# 
+# if [ "$TERM" != "linux" ]; then
+    # PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+# fi
 
-if [ "$TERM" != "linux" ]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
+
+GREEN="\[$(tput setaf 154)\]"
+PINK="\[$(tput setaf 199)\]"
+RESET="\[$(tput sgr0)\]"
+
+PS1="${GREEN}\h${RESET} ${PINK}\w${RESET} $ "
+
+shopt -s promptvars
+PS1='$(printf "%$((COLUMNS-1))s\r")'$PS1
+export PS1
 
 HISTSIZE=-1
 HISTFILESIZE=-1

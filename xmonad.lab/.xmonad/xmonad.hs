@@ -27,8 +27,8 @@ myBar = "xmobar"
 
 myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
 
-myKeys = [ ("M-c", spawn "firefox")
-         , ("M-y", spawn "firefox $(xclip -selection primary -out)")
+myKeys = [ ("M-c", spawn "c")
+         , ("M-y", spawn "c $(xclip -selection primary -out)")
          , ("M-e", spawn "emacsclient -c")
          , ("M-x", spawn "slock")
          , ("M-p", spawn "dmenu_run -fn 'Ubuntu Mono-32' -l 16")
