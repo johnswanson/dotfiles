@@ -39,7 +39,7 @@ myKeys = [ ("M-c", spawn "c")
            , (otherModMasks, action) <- [ ("", windows . W.view)
                                            , ("S-", windows . W.shift)]
            ]
- 
+
 myConfig = defaultConfig {
   startupHook = setWMName "LG3D"
   , manageHook = manageDocks <+> (className =? "X-Plane" --> doFloat) <+> (className =? "Kerbal Space Program" --> doFloat) <+> manageHook defaultConfig

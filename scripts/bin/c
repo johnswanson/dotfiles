@@ -1,7 +1,3 @@
 #!/bin/bash
 
-if [ "$HOSTNAME" == "lab" ]; then
-    chromium --new-window --force-device-scale-factor=2 $@
-else
-    chromium --new-window $@
-fi
+firefox-developer $@

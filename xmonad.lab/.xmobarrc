@@ -2,17 +2,16 @@ Config { bgColor = "#332936"
        , fgColor = "#aaa"
        , iconRoot = "/home/jds/.icons/"
        , pickBroadest = True
-       , font = "xft:Essential PragmataPro:size=18"
+       , font = "xft:Ubuntu Mono:size=24"
        , position = TopSize C 100 25
        , commands = [
-			 Run Network "enp3s0"
+			 Run Network "enp0s31f6"
                       [ "-t", "[<fc=#dc322f><tx></fc> <fc=#859900><rx></fc>]"
                       , "--ddigits", "0"
                       , "--suffix", "True"
                       , "-w", "6",
                         "-a", "r"
                       ] 10
-                    , Run CommandReader "~/bin/get-beeminder-goals" "beeminder-goals"
                     , Run CommandReader "~/.pymodoro/pymodoro.py" "pomodoro"
 										, Run Network "wlp4s0"
                       [ "-t", "[<fc=#dc322f><tx></fc> <fc=#859900><rx></fc>]"
@@ -45,15 +44,20 @@ Config { bgColor = "#332936"
                        "-L", "40",
                        "-H", "60",
                        "--high", "#dc322f"] 50
+                    , Run Brightness
+                      ["-t", "[bright:<percent>]", "--",
+                       "-D","intel_backlight",
+                       "-C","brightness",
+                       "-M","max_brightness"] 60
                     , Run MultiCpu
-                      ["-t","[<autovbar>]",
+                      ["-t","[cpu:<bar>]",
                        "-a", "r",
                        "-m", "2",
-                       "-L","3","-H","50",
+                       "-L","3","-H","20",
                        "--low", "#859900",
                        "--high","#dc322f"] 20
                     , Run Memory
-                      ["-t","[<usedvbar>]"
+                      ["-t","[mem:<usedbar>]"
                       , "-L", "50"
                       , "-H", "80"
                       , "--high", "#dc322f"] 100
@@ -61,7 +65,7 @@ Config { bgColor = "#332936"
                     , Run Com "uname" ["-r"] "" 36000
                     , Run StdinReader
                     , Run Battery
-                      ["-t", "<leftvbar> <left>% <watts> <acstatus>",
+                      ["-t", "<leftbar> <left>% <timeleft> <acstatus>",
                        "-L", "20", "-H", "80",
                        "--high", "#859900",
                        "--low", "#dc322f",
@@ -72,5 +76,5 @@ Config { bgColor = "#332936"
                        "-o", "<icon=bat_full_01.x2.xbm/>"] 10
                     ]
        , alignSep = "}{"
-       , template = "%StdinReader% %multicpu% %coretemp% %memory% <icon=wifi_01.x2.xbm/>%wlp4s0% <icon=net_wired.x2.xbm/>%net0% %uptime% }{ [%beeminder-goals%] [%pomodoro%] [%battery%] [%date%] %uname%"
+       , template = "%StdinReader% %multicpu% %coretemp% %memory% <icon=wifi_01.x2.xbm/>%wlp4s0% <icon=net_wired.x2.xbm/>%net0% %uptime% }{ [%pomodoro%] [%bright%] [%battery%] [%date%] %uname%"
        }
