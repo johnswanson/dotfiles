@@ -1,50 +1,35 @@
-Config { bgColor = "#333"
-       , fgColor = "#aaa"
-       , font = "xft:Essential PragmataPro:size=18"
-       , position = TopSize C 100 25
+Config { bgColor = "white"
+       , fgColor = "#333"
+       , iconRoot = "/home/jds/.icons/"
        , pickBroadest = True
+       , font = "xft:Ubuntu Mono:size=16"
+       , position = TopSize C 100 25
        , commands = [
-			 Run Network "enp3s0"
-                      [ "-t", "[<fc=#dc322f><tx></fc> <fc=#859900><rx></fc>]"
-                      , "--ddigits", "0"
-                      , "--suffix", "True"
-                      , "-w", "6",
-                        "-a", "r"
-                      ] 10
-                    , Run CommandReader "~/bin/get-beeminder-goals" "beeminder-goals"
-                    , Run CommandReader "~/.pymodoro/pymodoro.py" "pomodoro"
-										, Run Network "wlp10s0"
-                      [ "-t", "[<fc=#dc322f><tx></fc> <fc=#859900><rx></fc>]"
-                      , "--ddigits", "0"
-                      , "--suffix", "True"
-                      , "-w", "6",
-                        "-a", "r"
-                      ] 10
-                    , Run Uptime
-                      ["-t", "[<days> <hours> <minutes>]",
-                       "-S", "True"] 600
-                    , Run CoreTemp
-                      ["-t", "[<core0>° <core1>° <core2>° <core3>° <core4>°]",
-                       "-m", "2",
-                       "-L", "40",
-                       "-H", "60",
-                       "--high", "#dc322f"] 50
-                    , Run MultiCpu
-                      ["-t","[<autovbar>]",
-                       "-a", "r",
-                       "-m", "2",
-                       "-L","3","-H","50",
-                       "--low", "#859900",
-                       "--high","#dc322f"] 20
-                    , Run Memory
-                      ["-t","[<usedvbar>]"
-                      , "-L", "50"
-                      , "-H", "80"
-                      , "--high", "#dc322f"] 100
-                    , Run Date "<fc=#6c71c4>%a %F %H:%M</fc>" "date" 600
-                    , Run Com "uname" ["-r"] "" 36000
-                    , Run StdinReader
-                    ]
+           Run Uptime
+             ["-t", "[<days> <hours> <minutes>]",
+               "-S", "True"] 600
+           , Run CoreTemp
+             ["-t", "[<core0>° <core1>° <core2>° <core3>° <core4>°]",
+               "-m", "2",
+               "-L", "40",
+               "-H", "60",
+               "--high", "#dc322f"] 50
+           , Run MultiCpu
+             ["-t","[cpu:<bar>]",
+               "-a", "r",
+               "-m", "2",
+               "-L","3","-H","20",
+               "--low", "#859900",
+               "--high","#dc322f"] 20
+           , Run Memory
+             ["-t","[mem:<usedbar>]"
+             , "-L", "50"
+             , "-H", "80"
+             , "--high", "#dc322f"] 100
+           , Run Date "<fc=#6c71c4>%a %F %H:%M</fc>" "date" 600
+           , Run Com "uname" ["-r"] "" 36000
+           , Run StdinReader
+           ]
        , alignSep = "}{"
-       , template = "%StdinReader% %multicpu% %coretemp% %memory% %enp3s0% %wlp10s0% %uptime% }{ [%beeminder-goals%] [%pomodoro%] [%date%] %uname%"
+       , template = "%StdinReader% %multicpu% %coretemp% %memory% %uptime% }{ [%date%] %uname%"
        }
