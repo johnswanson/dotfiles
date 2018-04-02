@@ -1,3 +1,3 @@
 #!/bin/bash
 
-firefox -new-window https://dreamhost.slack.com
+c -new-window https://dreamhost.slack.com
