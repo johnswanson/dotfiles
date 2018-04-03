@@ -1,0 +1,4 @@
+#!/bin/bash
+
+c --new-window -url https://calendar.google.com/calendar/r \
+  -url https://calendar.google.com/calendar/b/1/r

@@ -35,8 +35,9 @@ Config { bgColor = "white"
              , "--high", "#dc322f"] 100
            , Run Date "<fc=#6c71c4>%a %F %H:%M</fc>" "date" 600
            , Run Com "uname" ["-r"] "" 36000
+           , Run CommandReader "/home/jds/bin/tockwatcher" "pomodoro"
            , Run StdinReader
            ]
        , alignSep = "}{"
-       , template = "%StdinReader% %multicpu% %coretemp% %memory% %uptime% }{ %wlp10s0% [%date%] %uname%"
+       , template = "%StdinReader% %multicpu% %coretemp% %memory% %uptime% }{ %pomodoro% %wlp10s0% [%date%] %uname%"
        }

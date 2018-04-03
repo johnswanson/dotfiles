@@ -1,0 +1,40 @@
+#!/bin/bash
+
+TOCK_LENGTH=45
+TOTAL_WIDTH=45
+
+while true;
+do
+    MINUTES=$(date +'%M')
+    MINUTES="${MINUTES#0}"
+    if (( $MINUTES > 44 )); then
+        echo -n "<fc=#CA1212>BREAK</fc>"
+    else
+        echo -n "<fc=#859900>"
+        SECONDS=$(date +'%S')
+        CHAR_SELECTOR=$(echo "$SECONDS % 4" | bc)
+        if (( $CHAR_SELECTOR == 0 )); then
+            CHAR="+"
+        elif (( $CHAR_SELECTOR == 1 )); then
+            CHAR="#"
+        elif (( $CHAR_SELECTOR == 2 )); then
+            CHAR="+"
+        elif (( CHAR_SELECTOR == 3 )); then
+            CHAR="#"
+        fi
+        PCT=$( echo "$MINUTES / $TOCK_LENGTH" | bc -l )
+        WIDTH=$( echo "($PCT*$TOTAL_WIDTH)/1" | bc )
+        REMAINING=$( echo "$TOTAL_WIDTH - $WIDTH" | bc)
+        for ((i=0; i<$WIDTH; i++))
+        do
+            echo -n "-"
+        done
+        for ((i=0; i<$REMAINING; i++))
+        do
+            echo -n "#"
+        done
+        echo -n "</fc>"
+    fi;
+    echo
+    sleep 1;
+done
